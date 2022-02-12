@@ -42,6 +42,8 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         path: ./dist/*.whl
+        name: dist
+        retention-days: 1
 
   publish:
     needs: build
@@ -55,7 +57,11 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
+          name: dist
           path: ./dist
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: ./dist
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
