@@ -36,11 +36,8 @@ jobs:
         python -m pip install --upgrade cibuildwheel==1.6.4
         python -m pip install wheel
 
-    - name: Build wheel using cross
+    - name: Build wheel
       shell: bash
-      env:
-        CARGO: cross
-        PYO3_CROSS_LIB_DIR: /opt/python/cp39-cp39/lib
       run: |
         python setup.py bdist_wheel
 
