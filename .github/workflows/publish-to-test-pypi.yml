@@ -13,7 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-latest, windows-latest ]
+        os: [windows-latest, ubuntu-latest]
     steps:
     - uses: actions/checkout@v2
 
@@ -41,7 +41,7 @@ jobs:
       run: |
         python setup.py bdist_wheel
 
-    #- name: Publish distribution 📦 to PyPI
-    #  uses: pypa/gh-action-pypi-publish@master
-    #  with:
-    #    password: ${{ secrets.PYPI_API }}
+    - name: Publish distribution 📦 to PyPI
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        password: ${{ secrets.PYPI_API }}
