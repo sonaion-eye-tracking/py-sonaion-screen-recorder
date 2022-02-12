@@ -44,6 +44,7 @@ jobs:
         path: ./dist/*.whl
 
   publish:
+    needs: build
     name: Publish Python 🐍 Wheel 🎮 to PyPI
     runs-on: ${{ matrix.os }}
     strategy:
@@ -54,9 +55,9 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v1
         with:
-          name: ./dist/*.whl
+          name: ./*.whl
           path: ./dist
       - name: Publish distribution 📦 to PyPI
-        uses: actions/gh-action-pypi-publish@master
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_API }}
