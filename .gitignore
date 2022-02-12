@@ -1,0 +1,12 @@
+## Compiled library
+target/
+build/
+dist/
+*.egg-info/
+.eggs/
+*.so
+*.pyd
+.idea
+
+**/__pycache__
+/.idea/
