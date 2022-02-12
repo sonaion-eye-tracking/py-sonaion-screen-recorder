@@ -29,7 +29,6 @@ except ImportError:
 cfg = toml.load("Cargo.toml")
 package_meta = cfg['package']
 
-
 setup_requires = [
     'setuptools',
     'setuptools-rust>=0.10.1'
@@ -50,7 +49,7 @@ setup(
             'py_sonaion_screen_recorder.py_sonaion_screen_recorder_rs',
             'Cargo.toml',
             binding=Binding.PyO3,
-            strip=Strip.Debug),
+            debug=False, ),
     ],
     packages=find_packages(),
     setup_requires=setup_requires,
