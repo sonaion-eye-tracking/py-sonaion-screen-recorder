@@ -41,7 +41,16 @@ jobs:
       run: |
         python setup.py bdist_wheel
 
-    - name: Publish distribution 📦 to PyPI
-      uses: pypa/gh-action-pypi-publish@master
+    - name: Build wheel
+      run: python -m cibuildwheel --output-dir dist/
+      env:
+        CIBW_BUILD: cp39-*
+
+    - uses: actions/upload-artifact@v2
       with:
-        password: ${{ secrets.PYPI_API }}
+        path: ./dist/*.whl
+
+    #- name: Publish distribution 📦 to PyPI
+    #  uses: pypa/gh-action-pypi-publish@master
+    #  with:
+    #    password: ${{ secrets.PYPI_API }}
