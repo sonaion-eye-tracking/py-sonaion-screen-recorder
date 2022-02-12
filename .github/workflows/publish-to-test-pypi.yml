@@ -13,8 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest]
-        #os: [ubuntu-latest]
+        os: [windows-latest]
     steps:
     - uses: actions/checkout@v2
 
@@ -35,13 +34,7 @@ jobs:
     - name: Setup pip
       run: |
         python -m pip install --upgrade pip
-        python -m pip install --upgrade cibuildwheel==1.6.4
         python -m pip install wheel
-
-    #- name: Build wheel
-    #  run: python -m cibuildwheel --output-dir dist/
-    #  env:
-    #    CIBW_BUILD: cp6-* cp7-* cp8-* cp39-* cp10-*
 
     - name: Build wheel
       run: python setup.py bdist_wheel
@@ -50,7 +43,7 @@ jobs:
       with:
         path: ./dist/*.whl
 
-    #- name: Publish distribution 📦 to PyPI
-    #  uses: pypa/gh-action-pypi-publish@master
-    #  with:
-    #    password: ${{ secrets.PYPI_API }}
+    - name: Publish distribution 📦 to PyPI
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        password: ${{ secrets.PYPI_API }}
