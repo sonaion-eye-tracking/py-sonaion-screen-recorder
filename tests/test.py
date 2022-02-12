@@ -1,3 +1,3 @@
-import package_name
+import py_sonaion_screen_recorder
 
-print(package_name.some_function(42))
+print(py_sonaion_screen_recorder.some_function(42))

@@ -1,4 +1,4 @@
-from . import package_name_rs
+from . import py_sonaion_screen_recorder_rs
 
 
 def some_function(x):
@@ -7,4 +7,4 @@ def some_function(x):
     :param x: int
     :return:
     """
-    return package_name_rs.py_some_function(x)
+    return py_sonaion_screen_recorder_rs.py_some_function(x)

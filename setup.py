@@ -36,7 +36,7 @@ setup_requires = [
 ]
 
 setup(
-    name="package_name",
+    name="py_sonaion_screen_recorder",
     version=package_meta['version'],
     author=package_meta['authors'][0],
     license="BSD-3-Clause",
@@ -47,7 +47,7 @@ setup(
     ],
     rust_extensions=[
         RustExtension(
-            'package_name.package_name_rs',
+            'py_sonaion_screen_recorder.py_sonaion_screen_recorder_rs',
             'Cargo.toml',
             binding=Binding.PyO3,
             strip=Strip.Debug),

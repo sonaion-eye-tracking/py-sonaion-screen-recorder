@@ -8,7 +8,7 @@ fn py_some_function(py: Python, x: PyObject) -> PyResult<i32> {
 }
 
 #[pymodule]
-fn package_name_rs(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
+fn py_sonaion_screen_recorder_rs(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(py_some_function, m)?)?;
     Ok(())
 }
