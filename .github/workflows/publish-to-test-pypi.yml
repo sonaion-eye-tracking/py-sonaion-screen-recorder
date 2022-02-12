@@ -8,8 +8,8 @@ on:
     types: [release]
 
 jobs:
-  build-n-publish:
-    name: Build and publish Python 🐍 distributions 📦 to PyPI
+  build:
+    name: Build Python 🐍 Wheel 🎮
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -43,7 +43,20 @@ jobs:
       with:
         path: ./dist/*.whl
 
-    - name: Publish distribution 📦 to PyPI
-      uses: pypa/gh-action-pypi-publish@master
-      with:
-        password: ${{ secrets.PYPI_API }}
+  publish:
+    name: Publish Python 🐍 Wheel 🎮 to PyPI
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: ./dist/*.whl
+          path: ./dist
+      - name: Publish distribution 📦 to PyPI
+        uses: actions/gh-action-pypi-publish@master
+        with:
+          password: ${{ secrets.PYPI_API }}
