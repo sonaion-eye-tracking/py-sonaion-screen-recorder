@@ -13,8 +13,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        #os: [windows-latest, ubuntu-latest]
-        os: [ubuntu-latest]
+        os: [windows-latest, ubuntu-latest]
+        #os: [ubuntu-latest]
     steps:
     - uses: actions/checkout@v2
 
@@ -38,10 +38,13 @@ jobs:
         python -m pip install --upgrade cibuildwheel==1.6.4
         python -m pip install wheel
 
+    #- name: Build wheel
+    #  run: python -m cibuildwheel --output-dir dist/
+    #  env:
+    #    CIBW_BUILD: cp6-* cp7-* cp8-* cp39-* cp10-*
+
     - name: Build wheel
-      run: python -m cibuildwheel --output-dir dist/
-      env:
-        CIBW_BUILD: cp39-*
+      run: python setup.py bdist_wheel
 
     - uses: actions/upload-artifact@v2
       with:
