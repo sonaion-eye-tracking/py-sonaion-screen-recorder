@@ -13,7 +13,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest]
+        #os: [windows-latest, ubuntu-latest]
+        os: [windows-latest]
     steps:
     - uses: actions/checkout@v2
 
@@ -22,9 +23,11 @@ jobs:
       with:
         python-version: 3.9
 
+    - name: Install Rust
     - uses: actions-rs/toolchain@v1
       with:
         toolchain: stable
+        components: rustup, ca
     - uses: actions-rs/cargo@v1
       with:
         command: build
@@ -35,11 +38,6 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install --upgrade cibuildwheel==1.6.4
         python -m pip install wheel
-
-    - name: Build wheel
-      shell: bash
-      run: |
-        python setup.py bdist_wheel
 
     - name: Build wheel
       run: python -m cibuildwheel --output-dir dist/
