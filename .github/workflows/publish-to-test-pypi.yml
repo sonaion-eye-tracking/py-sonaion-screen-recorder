@@ -55,7 +55,6 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v1
         with:
-          name: ./*.whl
           path: ./dist
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
