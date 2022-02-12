@@ -27,7 +27,6 @@ jobs:
       uses: actions-rs/toolchain@v1
       with:
         toolchain: stable
-        components: rustup, ca
     - uses: actions-rs/cargo@v1
       with:
         command: build
