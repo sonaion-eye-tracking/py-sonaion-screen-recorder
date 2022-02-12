@@ -7,7 +7,6 @@ RUN apt-get update && \
     add-apt-repository ppa:deadsnakes/ppa && \
     apt-get update && \
     apt-get install -y python3.9 && \
-    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1
 
 COPY --from=manylinux /opt/_internal /opt/_internal
 COPY --from=manylinux /opt/python /opt/python
